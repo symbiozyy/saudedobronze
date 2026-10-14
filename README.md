@@ -22,6 +22,6 @@ Busque por `[placeholder` e `R$ XX` no `index.html`:
 - Horário de funcionamento
 - Técnica de bronzeamento usada (FAQ). Não fazer promessas de saúde.
 - Depoimentos reais (destaque "Feedbacks!" do Instagram)
-- Fotos do espaço autorizadas pelo estabelecimento (as atuais são ilustrativas, do Unsplash)
+- Fotos: as atuais são ilustrativas (Unsplash), com fotos reserva em `data-fallback` caso alguma não carregue
 - Números de prova social (avaliação, sessões realizadas)
 - Confirmar cidade/bairro do endereço para o mapa

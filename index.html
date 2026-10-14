@@ -40,6 +40,15 @@
     "priceRange": "$$"
   }
   </script>
+  <script>
+    // Se uma foto não carregar, tenta a próxima da lista; sem opções, mantém o fundo bronze
+    function trocarFoto(img) {
+      var lista = (img.dataset.fallback || "").split("|").filter(Boolean);
+      if (!lista.length) { img.remove(); return; }
+      img.dataset.fallback = lista.slice(1).join("|");
+      img.src = lista[0];
+    }
+  </script>
 </head>
 <body>
 
@@ -64,7 +73,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero__media" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=70" alt="" onerror="this.remove()">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=70" data-fallback="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1800&q=70|https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=1800&q=70|https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1800&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=1800" alt="" onerror="trocarFoto(this)">
       </div>
       <div class="container hero__content">
         <p class="eyebrow">Bronzeamento &amp; Massagens · Jd Planalto</p>
@@ -82,6 +91,23 @@
       </div>
     </section>
 
+    <!-- SOBRE -->
+    <section class="section about">
+      <div class="container about__inner">
+        <div class="about__media">
+          <img class="about__photo" src="https://unsplash.com/photos/XlC0tkfQdwE/download?w=900" data-fallback="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=900&q=70|https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=70" alt="Mulher ao pôr do sol dourado na praia" loading="lazy" onerror="trocarFoto(this)">
+          <img class="about__logo" src="assets/logo.png" alt="" width="120" height="120">
+        </div>
+        <div>
+          <p class="eyebrow">Sobre nós</p>
+          <h2>Seu cantinho de <em>verão</em> no Jd Planalto</h2>
+          <p class="muted">A Saúde do Bronze nasceu para levar a sensação de um dia de praia para perto de você. Aqui, cada sessão é pensada para você sair com a pele dourada, o corpo relaxado e a autoestima lá em cima.</p>
+          <p class="muted">Atendimento próximo, ambiente acolhedor e muito cuidado em cada detalhe. [placeholder: história e diferenciais do espaço]</p>
+          <a href="#agendar" class="btn">Quero meu bronze</a>
+        </div>
+      </div>
+    </section>
+
     <!-- SERVIÇOS -->
     <section class="section" id="servicos">
       <div class="container">
@@ -94,7 +120,7 @@
         <div class="cards">
           <article class="card">
             <div class="card__media">
-              <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=70" alt="Pele bronzeada ao sol" loading="lazy" onerror="this.remove()">
+              <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=70" data-fallback="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=800&q=70|https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=800&q=70|https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=800&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=800" alt="Pele bronzeada ao sol" loading="lazy" onerror="trocarFoto(this)">
             </div>
             <div class="card__body">
               <h3>Bronzeamento</h3>
@@ -107,7 +133,7 @@
           <article class="card card--featured">
             <span class="badge">Mais pedido</span>
             <div class="card__media">
-              <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=70" alt="Massagem relaxante" loading="lazy" onerror="this.remove()">
+              <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=70" data-fallback="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=70|https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=70|https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=800" alt="Massagem relaxante" loading="lazy" onerror="trocarFoto(this)">
             </div>
             <div class="card__body">
               <h3>Bronze + Massagem</h3>
@@ -119,7 +145,7 @@
 
           <article class="card">
             <div class="card__media">
-              <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=70" alt="Massagem com óleos" loading="lazy" onerror="this.remove()">
+              <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=70" data-fallback="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=70|https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=70|https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=800" alt="Massagem com óleos" loading="lazy" onerror="trocarFoto(this)">
             </div>
             <div class="card__body">
               <h3>Massagens</h3>
@@ -174,15 +200,15 @@
         <header class="section__head">
           <p class="eyebrow">Galeria</p>
           <h2>Clima de verão o ano todo</h2>
-          <p class="muted">Imagens ilustrativas. Na versão final, entram as fotos autorizadas do espaço e das clientes.</p>
+          <p class="muted">Inspiração para quem ama aquele dourado de verão.</p>
         </header>
         <div class="gallery">
-          <figure class="g g--tall"><img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=700&q=70" alt="Praia ao entardecer" loading="lazy" onerror="this.remove()"><figcaption>Dourado natural</figcaption></figure>
-          <figure class="g"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=70" alt="Cuidados com a pele" loading="lazy" onerror="this.remove()"><figcaption>Cuidado com a pele</figcaption></figure>
-          <figure class="g"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=70" alt="Ambiente de spa" loading="lazy" onerror="this.remove()"><figcaption>Ambiente acolhedor</figcaption></figure>
-          <figure class="g g--wide"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1200&q=70" alt="Mar e areia" loading="lazy" onerror="this.remove()"><figcaption>A praia vem até você</figcaption></figure>
-          <figure class="g"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=70" alt="Momento de relaxamento" loading="lazy" onerror="this.remove()"><figcaption>Bem-estar</figcaption></figure>
-          <figure class="g g--wide"><img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1200&q=70" alt="Pôr do sol na praia" loading="lazy" onerror="this.remove()"><figcaption>Brilho de fim de tarde</figcaption></figure>
+          <figure class="g g--tall"><img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=700&q=70" data-fallback="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1520454974749-611b7248ffdb?auto=format&fit=crop&w=700&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=700" alt="Praia ao entardecer" loading="lazy" onerror="trocarFoto(this)"><figcaption>Dourado natural</figcaption></figure>
+          <figure class="g"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=70" data-fallback="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=700&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=700" alt="Cuidados com a pele" loading="lazy" onerror="trocarFoto(this)"><figcaption>Cuidado com a pele</figcaption></figure>
+          <figure class="g"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=70" data-fallback="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=700" alt="Ambiente de spa" loading="lazy" onerror="trocarFoto(this)"><figcaption>Ambiente acolhedor</figcaption></figure>
+          <figure class="g g--wide"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1200&q=70" data-fallback="https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1200&q=70|https://images.unsplash.com/photo-1520454974749-611b7248ffdb?auto=format&fit=crop&w=1200&q=70|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=1200" alt="Mar e areia" loading="lazy" onerror="trocarFoto(this)"><figcaption>A praia vem até você</figcaption></figure>
+          <figure class="g"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=70" data-fallback="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=70|https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=700&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=700" alt="Momento de relaxamento" loading="lazy" onerror="trocarFoto(this)"><figcaption>Bem-estar</figcaption></figure>
+          <figure class="g g--wide"><img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1200&q=70" data-fallback="https://images.unsplash.com/photo-1520454974749-611b7248ffdb?auto=format&fit=crop&w=1200&q=70|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=70|https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=70|https://unsplash.com/photos/XlC0tkfQdwE/download?w=1200" alt="Pôr do sol na praia" loading="lazy" onerror="trocarFoto(this)"><figcaption>Brilho de fim de tarde</figcaption></figure>
         </div>
         <p class="center"><a class="btn btn--ghost" href="https://instagram.com/saudedobronze" target="_blank" rel="noopener">Ver mais no @saudedobronze</a></p>
       </div>

@@ -104,6 +104,24 @@ p { margin: 0 0 1em; }
 .section--alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
 .section__head { text-align: center; max-width: 640px; margin: 0 auto 3rem; }
 
+/* Sobre */
+.about__inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+@media (max-width: 860px) { .about__inner { grid-template-columns: 1fr; gap: 3rem; } }
+.about__media {
+  position: relative; aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius);
+  background: radial-gradient(circle at 50% 30%, rgba(255, 210, 90, .6), transparent 45%), var(--grad-tile);
+  box-shadow: var(--shadow);
+}
+.about__photo {
+  width: 100%; height: 100%; object-fit: cover; border-radius: inherit;
+  filter: sepia(.25) saturate(1.15);
+}
+.about__logo {
+  position: absolute; right: -18px; bottom: -18px; width: 120px; height: 120px;
+  border-radius: 50%; border: 4px solid var(--bg); box-shadow: var(--shadow);
+}
+@media (max-width: 480px) { .about__logo { right: 8px; width: 90px; height: 90px; } }
+
 /* Cards de serviço */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
 .card {
